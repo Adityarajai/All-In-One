@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b16">
+
+<title>Aditya Web Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #070b16;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 55px 20px 35px;
+    background: linear-gradient(135deg, #101a3a, #090d1b, #17102c);
+    border-bottom: 1px solid #252d48;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #6c5ce7, #00c2ff);
+
+    font-size: 30px;
+    font-weight: bold;
+
+    box-shadow: 0 10px 35px #0008;
+}
+
+h1 {
+    font-size: clamp(34px, 8vw, 58px);
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: #aeb7d2;
+}
+
+/* Main */
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+    padding: 30px 0 50px;
+}
+
+/* Search */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+#search {
+    flex: 1;
+    min-width: 220px;
+
+    padding: 14px 17px;
+
+    border-radius: 14px;
+    border: 1px solid #293250;
+
+    background: #0e1427;
+    color: white;
+
+    outline: none;
+    font-size: 15px;
+}
+
+#search:focus {
+    border-color: #6c5ce7;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter {
+    padding: 11px 15px;
+
+    border-radius: 12px;
+    border: 1px solid #293250;
+
+    background: #0e1427;
+    color: #b9c2dc;
+
+    cursor: pointer;
+}
+
+.filter:hover,
+.filter.active {
+    background: #6c5ce7;
+    color: white;
+    border-color: #6c5ce7;
+}
+
+/* Cards */
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 18px;
+}
+
+.card {
+    padding: 23px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        145deg,
+        #11182d,
+        #0c1121
+    );
+
+    border: 1px solid #242d49;
+
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    border-color: #6572ff;
+
+    box-shadow: 0 18px 45px #0008;
+}
+
+.icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #1b2542;
+
+    font-size: 27px;
+
+    margin-bottom: 17px;
+}
+
+.card h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #9da8c4;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    min-height: 43px;
+}
+
+.tag {
+    display: inline-block;
+
+    margin: 15px 0 18px;
+
+    padding: 5px 9px;
+
+    border-radius: 8px;
+
+    background: #18203a;
+
+    color: #9eafff;
+
+    font-size: 12px;
+}
+
+.open {
+    display: block;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: #5865f2;
+
+    padding: 11px;
+
+    border-radius: 11px;
+
+    font-weight: bold;
+}
+
+.open:hover {
+    background: #6875ff;
+}
+
+/* Empty */
+.empty {
+    display: none;
+
+    text-align: center;
+
+    color: #8993ad;
+
+    padding: 40px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+
+    color: #68738e;
+
+    padding: 25px;
+
+    border-top: 1px solid #20283f;
+
+    font-size: 13px;
+}
+
+@media (max-width: 500px) {
+
+    header {
+        padding-top: 42px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        AR
+    </div>
+
+    <h1>
+        Aditya Web Hub
+    </h1>
+
+    <p class="subtitle">
+        All my websites & games in one place
+    </p>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <!-- SEARCH -->
+
+    <div class="toolbar">
+
+        <input
+            id="search"
+            type="search"
+            placeholder="Search projects..."
+        >
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+            <button
+                class="filter"
+                data-filter="ai"
+            >
+                AI
+            </button>
+
+            <button
+                class="filter"
+                data-filter="game"
+            >
+                Games
+            </button>
+
+            <button
+                class="filter"
+                data-filter="other"
+            >
+                Other
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROJECT GRID -->
+
+    <section class="grid" id="grid">
+
+
+        <!-- AI KING -->
+
+        <article
+            class="card"
+            data-category="ai"
+            data-name="AI King"
+        >
+
+            <div class="icon">
+                🤖
+            </div>
+
+            <h2>
+                AI King
+            </h2>
+
+            <p>
+                My AI project and website.
+            </p>
+
+            <span class="tag">
+                AI
+            </span>
+
+            <a
+                class="open"
+                href="https://aditya-aiking.netlify.app"
+                target="_blank"
+                rel="noopener"
+            >
+                Open Website ↗
+            </a>
+
+        </article>
+
+
+        <!-- FLAPPY BIRD -->
+
+        <article
+            class="card"
+            data-category="game"
+            data-name="Flappy Bird"
+        >
+
+            <div class="icon">
+                🐦
+            </div>
+
+            <h2>
+                Flappy Bird
+            </h2>
+
+            <p>
+                A browser flying game.
+            </p>
+
+            <span class="tag">
+                Game
+            </span>
+
+            <a
+                class="open"
+                href="https://aditya-flappybird.netlify.app"
+                target="_blank"
+                rel="noopener"
+            >
+                Play Game ↗
+            </a>
+
+        </article>
+
+
+        <!-- SNAKE -->
+
+        <article
+            class="card"
+            data-category="game"
+            data-name="Snake"
+        >
+
+            <div class="icon">
+                🐍
+            </div>
+
+            <h2>
+                Snake
+            </h2>
+
+            <p>
+                My browser-based Snake game.
+            </p>
+
+            <span class="tag">
+                Game
+            </span>
+
+            <a
+                class="open"
+                href="https://aditya-snake.netlify.app"
+                target="_blank"
+                rel="noopener"
+            >
+                Play Game ↗
+            </a>
+
+        </article>
+
+
+        <!-- GOOGOL -->
+
+        <article
+            class="card"
+            data-category="other"
+            data-name="Googol"
+        >
+
+            <div class="icon">
+                🔢
+            </div>
+
+            <h2>
+                Googol
+            </h2>
+
+            <p>
+                A project exploring very large numbers.
+            </p>
+
+            <span class="tag">
+                Project
+            </span>
+
+            <a
+                class="open"
+                href="https://aditya-googol.netlify.app"
+                target="_blank"
+                rel="noopener"
+            >
+                Open Website ↗
+            </a>
+
+        </article>
+
+
+        <!-- FIRE -->
+
+        <article
+            class="card"
+            data-category="game"
+            data-name="Fire"
+        >
+
+            <div class="icon">
+                🔥
+            </div>
+
+            <h2>
+                Fire
+            </h2>
+
+            <p>
+                An action game inspired by the battle-royale genre.
+            </p>
+
+            <span class="tag">
+                Game
+            </span>
+
+            <a
+                class="open"
+                href="https://aditya-fire.netlify.app"
+                target="_blank"
+                rel="noopener"
+            >
+                Play Game ↗
+            </a>
+
+        </article>
+
+
+        <!-- AI CRAFT -->
+
+        <article
+            class="card"
+            data-category="game"
+            data-name="AI Craft"
+        >
+
+            <div class="icon">
+                🧱
+            </div>
+
+            <h2>
+                AI Craft
+            </h2>
+
+            <p>
+                A block-building and crafting game inspired by the sandbox genre.
+            </p>
+
+            <span class="tag">
+                Game
+            </span>
+
+            <a
+                class="open"
+                href="https://aditya-aicraft.netlify.app"
+                target="_blank"
+                rel="noopener"
+            >
+                Play Game ↗
+            </a>
+
+        </article>
+
+    </section>
+
+
+    <div
+        class="empty"
+        id="empty"
+    >
+        No project found.
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Aditya Raj · Aditya Web Hub
+
+</footer>
+
+
+<script>
+
+const cards =
+    [...document.querySelectorAll(".card")];
+
+const search =
+    document.getElementById("search");
+
+const empty =
+    document.getElementById("empty");
+
+const filters =
+    [...document.querySelectorAll(".filter")];
+
+let activeFilter = "all";
+
+
+function render() {
+
+    const query =
+        search.value
+            .toLowerCase()
+            .trim();
+
+    let visible = 0;
+
+
+    cards.forEach(card => {
+
+        const categoryMatch =
+            activeFilter === "all" ||
+            card.dataset.category === activeFilter;
+
+        const searchMatch =
+            card.dataset.name
+                .toLowerCase()
+                .includes(query);
+
+
+        const show =
+            categoryMatch &&
+            searchMatch;
+
+
+        card.style.display =
+            show ? "block" : "none";
+
+
+        if (show) {
+            visible++;
+        }
+
+    });
+
+
+    empty.style.display =
+        visible ? "none" : "block";
+}
+
+
+filters.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            filters.forEach(
+                b => b.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            activeFilter =
+                button.dataset.filter;
+
+            render();
+
+        }
+    );
+
+});
+
+
+search.addEventListener(
+    "input",
+    render
+);
+
+</script>
+
+</body>
+</html>
